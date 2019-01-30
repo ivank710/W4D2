@@ -1,0 +1,41 @@
+<h2> Create a new cat </h2>
+
+<form action="<%= cats_url %>" method="post">
+  
+  <label for="name">Name: 
+    <input type="text" name="cat[name]">
+    <%# do we need to add value at the end of line 6? %>
+  </label>
+  <br><br>
+
+  <label for="birth_date">Birth Date: 
+    <input type="date" name="cat[birth_date]" value="<%= @cat.birth_date %>">
+    <%# can type be date? %>
+  </label>
+  <br><br>
+
+  <label for="color">Color: </label>
+    <select name="cat[color]" >
+      <option disabled selected>-- select color --</option>
+        <% Cat::COLORS.each do |color| %>
+        <option value="<%= color%>"><%= color%></option>
+        <%end%>
+    </select>
+    <br><br>
+    
+  <label for="sex">Sex: 
+    <input type="radio" value="M" name="cat[sex]">
+    <label for="cat[sex]">M</label>
+    <input type="radio" value="F" name="cat[sex]">
+    <label for="cat[sex]">F</label>
+  </label>
+  <br><br>
+
+  <label for="description">Description: 
+    <textarea name="cat[description]"></textarea>
+    <%# <input type="text" > %>
+  </label>
+
+  <br><br>
+  <input type="submit" value="Create new cat!">
+</form>
